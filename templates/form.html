@@ -1,0 +1,443 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ЧетыреЛапы</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+	<nav class="navbar">
+		<div class="container">
+			<a href="#" class="navbar-brand">ЧетыреЛапы</a>
+			<div class="navbar-wrap">
+				<ul class="navbar-menu">
+					<li><a href="http://127.0.0.1:8000/">Главная</a></li>
+					<li><a href="#" target="_blank">Аксессуары</a></li>
+					<li><a href="#" target="_blank">Портфолио</a></li>
+					<li><a href="#" target="_blank">Поддержка</a></li>
+				</ul>
+			
+				<a href="http://127.0.0.1:8000/products/" target="_blank" class="callback">Магазин</a>
+			</div>
+		</div>
+	</nav>
+    <form action="{% url 'thanks' %}" style="border:1px solid #ccc" method="GET">
+        <div class="container">
+          <h1>Форма покупки</h1>
+          <p>Пожалуйста, заполните эту форму, чтобы купить товар.</p>
+          <hr>
+      
+          <label for="email"><b>ФИО</b></label>
+          <input type="text" placeholder="Введите ваше ФИО" name="FIO" required>
+      
+          <label for="psw"><b>Email</b></label>
+          <input type="text" placeholder="Введите ваш email" name="email" required>
+      
+          <label for="psw-repeat"><b>Телефон</b></label>
+          <input type="text" placeholder="Введите ваш телефон" name="phone" required>
+      
+          <div class="clearfix">
+            <a href="http://127.0.0.1:8000/products/cat1"><button type="button" class="cancelbtn">Отменить</button></a>
+            <button type="submit" class="signupbtn">Оформить заказ</button>
+          </div>
+        </div>
+      </form>
+</body>
+<style>
+	body {
+	position: relative;
+	font-family: 'Noto Sans', sans-serif;
+	font-size: 16px;
+	line-height: 1.4;
+	color: #000;
+	min-width: 320px;
+	overflow-x: hidden;
+	height: auto;
+}
+
+.navbar {
+	width: 100%;
+	height: 70px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
+}
+
+.navbar .container {
+	height: inherit;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.navbar-menu {
+	list-style-type: none;
+	padding-left: 0;
+	margin-bottom: 0;
+}
+
+.navbar-menu li {
+	display: inline-block;
+}
+
+.navbar-menu li a {
+	display: inline-block;
+	color: #000;
+	opacity: 0.6;
+	text-decoration: none;
+	padding: 10px;
+	transition: all .07s ease-in-out ;
+}
+
+.navbar-menu li a:hover {
+	opacity: 1;
+}
+
+.navbar-wrap {
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+.callback {
+	margin-left: 30px;
+	padding: 10px 30px;
+	background-color: coral;
+	border-radius: 100px;
+	color: white;
+	text-decoration: none;
+	transition: all .1s ease-out;
+	box-shadow: 0 4px 6px rgba(255, 127, 80, .2);
+}
+
+.callback:hover {
+	color: white;
+	transform: scale(1.04);
+	box-shadow: 0 9px 9px rgba(255, 127, 80, .5);
+}
+
+.navbar-brand {
+	font-weight: 700;
+	font-size: 26px;
+	text-decoration: none;
+	color: #000;
+	transition: all .07s ease-in-out ;
+}
+
+.navbar-brand:hover {
+	color: coral;
+}
+
+.header {
+	position: relative;
+	min-height: 700px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.header-content {
+	text-align: center;
+	position: relative;
+	z-index: 2;
+	color: #fff ;
+}
+
+.header .row {
+	min-height: 700px;
+	display: flex;
+	align-items: center;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, .2);
+	
+}
+
+.header-content h1 {
+	font-size: 36px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.header-content h4 {
+	font-size: 21px;
+	font-weight: 400;
+	margin-bottom: 10px;
+	opacity: 0.7;
+	margin-bottom: 35px;
+}
+
+.btn-main {
+	display: inline-block;
+	padding: 10px 35px;
+	font-size: 18px;
+	border: none;
+	background-color: coral;
+	color: white;
+	text-transform: uppercase;
+	border-radius: 5px;
+	font-weight: 700;
+	box-shadow: 0 5px 10px rgba(255, 127, 80, .5);
+	transition: all .09s ease-out;
+}
+
+.btn-main:hover {
+	box-shadow: 0 5px 10px rgba(255, 127, 80, .5);
+	transform: scale(1.05);
+}
+
+p {
+	font-size: large;
+	font-weight: 500;
+	text-align: center;
+}
+
+.image {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.im {
+	margin-top: 30px;
+	text-align: left;
+	margin-right: 30px;
+	margin-left: 30px;
+	border-radius: 7px;
+}
+
+.btn {
+	display: inline-block;
+	background-color: coral;
+	margin-top: 30px;
+	margin-left: 170px;
+	margin-right: 180px;
+	font-size: 18px;
+	border: none;
+	color: white;
+	text-transform: uppercase;
+	border-radius: 5px;
+	font-weight: 700;
+	box-shadow: 0 5px 10px rgba(255, 127, 80, .5);
+	transition: all .09s ease-out;
+
+}
+
+.btn:hover {
+	box-shadow: 0 5px 10px rgba(255, 127, 80, .5);
+	transform: scale(1.05);
+}
+
+.in {
+	margin-top: 30px;
+	text-align: right;
+	margin-right: 30px;
+	margin-left: 30px;
+	border-radius: 7px;
+}
+
+.cat1 {
+	color: black;
+	opacity: 0.9;
+	text-align: left;	
+	transition: all .07s ease-in-out;
+	padding: 20px
+}
+
+.admin {
+	color: black;
+	opacity: 0.6;
+	text-align: left;
+	transition: all .07s ease-in-out;
+	padding: 20px
+}
+.chetire {
+	color: black;
+	opacity: 0.6;
+	text-align: left;
+	transition: all .07s ease-in-out;
+	padding: 20px
+}
+.email {
+	color: black;
+	opacity: 0.6;
+	text-align: left;
+	transition: all .07s ease-in-out;
+	padding: 20px
+}
+.paragraf {
+	color: black;
+	opacity: 0.6;
+	text-align: left;
+	transition: all .07s ease-in-out;
+	padding: 20px
+}
+
+.para2 {
+	color: #000;
+	opacity: 0.6;
+	text-align: center;
+	transition: all .07s ease-in-out;
+	padding: 20px
+}
+
+.footer {
+	position: relative;
+	min-height: 50px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	display: flex;
+}
+
+.info-price {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.price {
+	font-size: 25px;
+}
+
+.add-to-cart {
+	background-color: coral;
+	border: none;
+	border-radius: 5px;
+}
+
+*{box-sizing: border-box}
+
+   input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.signupbtn, .cancelbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.link {
+	color: coral;
+	display: inline-block;
+	opacity: 0.6;
+	text-decoration: none;
+	padding: 10px;
+	transition: all .07s ease-in-out ;
+}
+.category-tovar {
+	display: inline-block;
+	background-color: coral;
+	font-size: 18px;
+	border: none;
+	color: white;
+	text-transform: uppercase;
+	border-radius: 5px;
+	font-weight: 700;
+	box-shadow: 0 5px 10px rgba(255, 127, 80, .5);
+	transition: all .09s ease-out;
+}
+
+
+.category-tovar:hover {
+	box-shadow: 0 5px 10px rgba(255, 127, 80, .5);
+ 	transform: scale(1.05);
+}
+
+.form1 {
+	padding: 10px;
+	margin-top: 10px;
+	width: 100%;
+	margin: 5px 0 22px 0;
+	display: inline-block;
+	border: none;
+}
+
+select {
+	font: inherit;
+	letter-spacing: inherit;
+	word-spacing: inherit;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	width: 500px;
+	height: 50px;
+  }
+  select:not([multiple]) {
+	padding-right: 1.2em;
+	background-repeat: no-repeat;
+	background-position: calc(100% - 0.25em) 0.35em;
+	background-size: 0.85em auto;
+}  
+
+.h1 {
+	padding: 10px;
+}
+
+.shop {
+	padding: 10px;
+}
+
+.thanks {
+	text-align: center;
+	color: coral;
+}
+
+.center {
+	text-align: center;
+}
+</style>
+</html>
